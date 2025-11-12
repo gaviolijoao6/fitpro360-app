@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitPro360 — Seu Coach Digital</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0b0f1a, #1a1f2e);
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 30px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(5px);
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #00ffcc;
+      margin: 0;
+    }
+    p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .cta {
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 15px 30px;
+      margin: 20px 0;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .cta:hover {
+      background: #00bfa5;
+    }
+    .quiz-box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 25px;
+      border-radius: 15px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 400px;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FitPro360</h1>
+    <p>Transforme seu corpo com o coach digital mais inteligente do Brasil.</p>
+  </header>
+
+  <div class="quiz-box" id="quiz">
+    <h2>Descubra seu plano ideal</h2>
+    <p>Escolha um objetivo para começar:</p>
+    <button class="cta" onclick="startQuiz('emagrecer')">🔥 Emagrecer</button><br/>
+    <button class="cta" onclick="startQuiz('academia')">💪 Academia</button><br/>
+    <button class="cta" onclick="startQuiz('futebol')">⚽ Futebol competitivo</button>
+  </div>
+
+  <div id="result"></div>
+
+  <footer>
+    © 2025 FitPro360 — Evolua com tecnologia.
+  </footer>
+
+  <script>
+    function startQuiz(tipo) {
+      let resultText = '';
+      if (tipo === 'emagrecer') {
+        resultText = 'Seu foco é emagrecer! 🎯 O FitPro360 recomenda treinos HIIT e um plano leve de nutrição. Deseja ativar o plano completo?';
+      } else if (tipo === 'academia') {
+        resultText = 'Quer ganhar força e definição 💪 — o FitPro360 recomenda treino dividido e acompanhamento personalizado.';
+      } else if (tipo === 'futebol') {
+        resultText = 'Foco esportivo ⚽ — o FitPro360 sugere resistência e velocidade com base no seu perfil.';
+      }
+      document.getElementById('quiz').style.display = 'none';
+      document.getElementById('result').innerHTML = `
+        <div class="quiz-box">
+          <p>${resultText}</p>
+          <a href="https://mpago.la/2njzbWf" target="_blank">
+            <button class="cta">Ativar Plano Premium</button>
+          </a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
