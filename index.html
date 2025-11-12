@@ -97,5 +97,53 @@
       `;
     }
   </script>
-</body>
+<!-- === COACH FITPRO360 CHAT === -->
+<div id="coachBox" style="display:none;position:fixed;bottom:20px;right:20px;background:#111;padding:15px;border-radius:15px;width:300px;max-width:90%;box-shadow:0 0 10px #00ffcc;">
+  <h3 style="color:#00ffcc;margin-top:0;">Coach FitPro360 🤖</h3>
+  <div id="chatArea" style="height:150px;overflow-y:auto;text-align:left;font-size:0.9rem;margin-bottom:10px;"></div>
+  <input id="userMsg" type="text" placeholder="Escreva aqui..." style="width:75%;padding:5px;border:none;border-radius:8px;">
+  <button onclick="enviarMsg()" style="background:#00ffcc;border:none;padding:6px 10px;border-radius:8px;cursor:pointer;">Enviar</button>
+</div>
+<script src="fitpro_coach.js"></script>
+<script>
+  let tipoAtual = '';
+  function startQuiz(tipo) {
+    tipoAtual = tipo;
+    let resultText = '';
+    if (tipo === 'emagrecer') {
+      resultText = 'Seu foco é emagrecer! 🎯 O FitPro360 recomenda treinos HIIT e um plano leve de nutrição. Deseja ativar o plano completo?';
+    } else if (tipo === 'academia') {
+      resultText = 'Quer ganhar força e definição 💪 — o FitPro360 recomenda treino dividido e acompanhamento personalizado.';
+    } else if (tipo === 'futebol') {
+      resultText = 'Foco esportivo ⚽ — o FitPro360 sugere resistência e velocidade com base no seu perfil.';
+    }
+    document.getElementById('quiz').style.display = 'none';
+    document.getElementById('result').innerHTML = `
+      <div class="quiz-box">
+        <p>${resultText}</p>
+        <button class="cta" onclick="abrirCoach()">💬 Falar com o Coach</button><br/><br/>
+        <a href="https://mpago.la/2njzbWf" target="_blank">
+          <button class="cta">Ativar Plano Premium</button>
+        </a>
+      </div>`;
+  }
+
+  function abrirCoach() {
+    document.getElementById('coachBox').style.display = 'block';
+    document.getElementById('chatArea').innerHTML = '<p><b>Coach:</b> Olá! Sou seu coach FitPro360. Como posso te ajudar hoje?</p>';
+  }
+
+  function enviarMsg() {
+    const msg = document.getElementById('userMsg').value.trim();
+    if (!msg) return;
+    document.getElementById('chatArea').innerHTML += `<p><b>Você:</b> ${msg}</p>`;
+    const resposta = responderCoach(tipoAtual);
+    setTimeout(() => {
+      document.getElementById('chatArea').innerHTML += `<p><b>Coach:</b> ${resposta}</p>`;
+      document.getElementById('chatArea').scrollTop = document.getElementById('chatArea').scrollHeight;
+    }, 600);
+    document.getElementById('userMsg').value = '';
+  }
+</script>
+<!-- === /COACH FITPRO360 CHAT === --></body>
 </html>
